@@ -11,8 +11,8 @@ class BaseDeDatos {
 	constructor() {
 		this.productos = []
 		this.agregarRegistro(1, '一体型米', 400, 'Alimentos', 'arroz.png')
-		this.agregarRegistro(2, '麺', 300, 'Alimentos', 'fideos.png')
-		this.agregarRegistro(3, 'キャラメルクッキー', 400, 'Alimentos', 'alfajor.png')
+		this.agregarRegistro(2, '麺米', 300, 'Alimentos', 'fideos.png')
+		this.agregarRegistro(3, 'キャラメル', 400, 'Alimentos', 'alfajor.png')
 		this.agregarRegistro(4, 'パン', 200, 'Alimentos', 'pan.png')
 		this.agregarRegistro(5, 'あめ', 100, 'Alimentos', 'caramelo.png')
 	}
@@ -110,6 +110,7 @@ const divProductos = document.querySelector('#productos')
 const divCarrito = document.querySelector('#carrito')
 const inputBuscar = document.querySelector('#inputBuscar')
 const botonCarrito = document.querySelector('section h1')
+const btnComprar = document.querySelector('.btnComprar')
 
 const carrito = new Carrito()
 
@@ -127,7 +128,7 @@ function cargarProductos(productos) {
 						<div class="card-body">
 							<h5 class="card-title">${producto.nombre}</h5>
 							<p class="card-text precio">$${producto.precio}</p>
-								<button type="button" href="#" class="btn btn-primary btnAgregar"data-id="${producto.id}">Agregar al Carrito</button>
+								<button type="button" href="#" class="btn btn-primary btnAgregar"data-id="${producto.id}">Comprar</button>
   					</div>
 				</div>
   		</div>
@@ -142,8 +143,14 @@ function cargarProductos(productos) {
 			event.preventDefault()
 			const idProducto = +boton.dataset.id
 			const producto = db.registroPorId(idProducto)
-
 			carrito.agregar(producto)
+			Swal.fire({
+				position: 'center',
+				icon: 'success',
+				title: '¡Elemento Agregado con Exito',
+				showConfirmButton: false,
+				timer: 1000,
+			})
 		})
 	}
 }
@@ -153,4 +160,20 @@ inputBuscar.addEventListener('input', (event) => {
 	const palabra = inputBuscar.value
 	const productos = db.registrosPorNombre(palabra)
 	cargarProductos(productos)
+})
+
+btnComprar.addEventListener('click', (event) => {
+	event.preventDefault()
+	Swal.fire({
+		title: '二度と来ないでください',
+		width: 400,
+		padding: '1rem',
+		background: 'url(/img/vision.png) no-repeat center',
+		backdrop: `
+    rgba(0,0,123,0.4)
+    url(/img/MONEY.png)
+    center
+    no-repeat
+  `,
+	})
 })
