@@ -78,11 +78,11 @@ class Carrito {
 
 		for (const producto of this.carrito) {
 			divCarrito.innerHTML += ` 
-      <div class="productoCarrito">
-      <h2>${producto.nombre}</h2>
+      <div class="productoCarrito text-center">
+      <h2 class="border-bottom border-info-subtle border-4">${producto.nombre}</h2>
       <p>$${producto.precio}</p>
       <p>Cantidad:${producto.cantidad}</p>
-      <a href="#" class="btnQuitar" data-id="${producto.id}">Quitar del carrito</a>
+      <button href="#" class="btnQuitar" data-id="${producto.id}"><img src="img/trash3.svg" /></button>
       </div>
       `
 			this.total += producto.precio * producto.cantidad
@@ -153,8 +153,4 @@ inputBuscar.addEventListener('input', (event) => {
 	const palabra = inputBuscar.value
 	const productos = db.registrosPorNombre(palabra)
 	cargarProductos(productos)
-})
-
-botonCarrito.addEventListener('click', (event) => {
-	document.querySelector('section').classList.toggle('ocultar')
 })
