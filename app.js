@@ -81,7 +81,7 @@ class Carrito {
       <div class="productoCarrito text-center">
       <h2 class="border-bottom border-info-subtle border-4">${producto.nombre}</h2>
       <p>$${producto.precio}</p>
-      <p>Cantidad:${producto.cantidad}</p>
+      <p>額:${producto.cantidad}</p>
       <button href="#" class="btnQuitar" data-id="${producto.id}"><img src="img/trash3.svg" /></button>
       </div>
       `
@@ -109,8 +109,8 @@ const spanTotalCarrito = document.querySelector('#totalCarrito')
 const divProductos = document.querySelector('#productos')
 const divCarrito = document.querySelector('#carrito')
 const inputBuscar = document.querySelector('#inputBuscar')
-const botonCarrito = document.querySelector('section h1')
 const btnComprar = document.querySelector('.btnComprar')
+const imgCarrito = document.querySelector('.imagen-carrito')
 
 const carrito = new Carrito()
 
@@ -128,7 +128,7 @@ function cargarProductos(productos) {
 						<div class="card-body">
 							<h5 class="card-title">${producto.nombre}</h5>
 							<p class="card-text precio">$${producto.precio}</p>
-								<button type="button" href="#" class="btn btn-primary btnAgregar"data-id="${producto.id}">Comprar</button>
+								<button type="button" href="#" class="btn btn-primary btnAgregar"data-id="${producto.id}">今すぐ購入</button>
   					</div>
 				</div>
   		</div>
@@ -147,7 +147,7 @@ function cargarProductos(productos) {
 			Swal.fire({
 				position: 'center',
 				icon: 'success',
-				title: '¡Elemento Agregado con Exito',
+				title: '要素が正常に追加されました',
 				showConfirmButton: false,
 				timer: 1000,
 			})
@@ -176,4 +176,8 @@ btnComprar.addEventListener('click', (event) => {
     no-repeat
   `,
 	})
+	imgCarrito.classList.add('resplandor')
+	setTimeout(() => {
+		imgCarrito.classList.remove('resplandor')
+	}, 500)
 })

@@ -19,19 +19,21 @@
 					<div class="glitch-img"></div>
 					<div class="glitch-img"></div>
 				</div>
-				<h1 class="content-title neonText">Welcome to the Black Market</h1>
+				<h1 class="content-title neonText">
+ブラックマーケットへようこそ</h1>
 			</div>
   <main class="d-flex justify-content-center" >
-    <input type="text" name="" id="inputBuscar" placeholder="Search the WEB" >
+    <input type="text" name="" id="inputBuscar" placeholder="ウェブで検索する" >
     <div  class="text-center">
       <div id="productos" class="d-flex justify-content-evenly">
       </div>
     </div>
     <section>
-      <button class="btn btn-primary align-bottom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Mi carrito de Compras</button>
+      <button class="btn align-bottom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><img src="img/carrito.png"><p>
+ショッピングカート</p></button>
       <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"     id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasScrollingLabel"> Tu carrito cuenta con <span id="cantidadProductos">0</span> items</h5>
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">あなたのカートには、<span id="cantidadProductos">0</span> アイテム</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -43,7 +45,9 @@
         <h2>
         合計: $<span id="totalCarrito" >0</span>
         </h2>
-        <button href='#' class="btnComprar">Comprar</button>
+        <div class="text-center">
+          <button href='#' class="btnComprar">今すぐ購入</button>
+        </div>
       </div>
     </div>
   </section>
