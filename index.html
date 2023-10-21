@@ -20,17 +20,30 @@
 					<div class="glitch-img"></div>
 				</div>
 				<h1 class="content-title neonText">
-ブラックマーケットへようこそ</h1>
+          ブラックマーケットへようこそ
+        </h1>
 			</div>
   <main class="d-flex justify-content-center" >
     <input type="text" name="" id="inputBuscar" placeholder="ウェブで検索する" >
+    <div class="text-end">
+      <ul class="list-group">
+      <li class="list-group-item active btn btnCategoria" data-categoria="Todos">Todos</li>
+      <li class="list-group-item btn btnCategoria" data-categoria="Bebidas">Bebidas</li>
+      <li class="list-group-item btn btnCategoria" data-categoria="Pastas">Pastas</li>
+      <li class="list-group-item btn btnCategoria" data-categoria="Donas">Donas</li>
+      <li class="list-group-item btn btnCategoria" data-categoria="FastFood">FastFood</li>
+      <li class="list-group-item btn btnCategoria" data-categoria="Armas">Armas</li>
+    </ul>
+    </div>
     <div  class="text-center">
       <div id="productos" class="d-flex justify-content-evenly">
       </div>
     </div>
     <section>
-      <button class="btn align-bottom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><img src="img/carrito.png"><p>
-ショッピングカート</p></button>
+      <button class="btn align-bottom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><img src="img/carrito.png">     <p>
+        ショッピングカート
+      </p> 
+      </button>
       <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"     id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasScrollingLabel">あなたのカートには、<span id="cantidadProductos">0</span> アイテム</h5>
@@ -43,7 +56,7 @@
           </div>
         </div>
         <h2>
-        合計: $<span id="totalCarrito" >0</span>
+        合計: $<span id="totalCarrito">0</span>
         </h2>
         <div class="text-center">
           <button href='#' class="btnComprar">今すぐ購入</button>
@@ -51,8 +64,22 @@
       </div>
     </div>
   </section>
-
-
+  <section id="juego">
+  <canvas id="canvas1"></canvas>
+  <img id="player" src="assets/player.png">
+  <img id="layer1" src="assets/layer-1.png">
+  <img id="layer2" src="assets/layer-2.png">
+  <img id="layer3" src="assets/layer-3.png">
+  <img id="layer4" src="assets/layer-4.png">
+  <img id="layer5" src="assets/layer-5.png">
+  <img id="enemy_fly" src="assets/enemy_fly.png" />
+  <img id="enemy_plant" src="assets/enemy_plant.png" />
+  <img id="enemy_spider_big" src="assets/enemy_spider_big.png" />
+  <img id="fire" src="assets/fire.png">
+  <img id="collisionAnimation" src="assets/boom.png">
+  <img id="lives" src="assets/heart.png">
+  
+  </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

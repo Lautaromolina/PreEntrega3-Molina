@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nombre": "一体型米",
+    "precio": 400,
+    "categoria": "Bebidas",
+    "imagen": "soda.png"
+    
+  },
+  {
+    "id": 2,
+    "nombre": "麺米",
+    "precio": 300,
+    "categoria": "Pastas",
+    "imagen": "fideos.png"
+    
+  },
+  {
+    "id": 3,
+    "nombre": "キャラメル",
+    "precio": 400,
+    "categoria": "Donas",
+    "imagen": "donas.png"
+    
+  },
+  {
+    "id": 4,
+    "nombre": "パン",
+    "precio": 200,
+    "categoria": "FastFood",
+    "imagen": "hamburguesa.png"
+    
+  },
+  {
+    "id": 5,
+    "nombre": "あめ",
+    "precio": 100,
+    "categoria": "Armas",
+    "imagen": "arma.png"
+    
+  }
+]

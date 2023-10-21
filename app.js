@@ -10,18 +10,17 @@ class Producto {
 class BaseDeDatos {
 	constructor() {
 		this.productos = []
-		this.agregarRegistro(1, '一体型米', 400, 'Alimentos', 'arroz.png')
-		this.agregarRegistro(2, '麺米', 300, 'Alimentos', 'fideos.png')
-		this.agregarRegistro(3, 'キャラメル', 400, 'Alimentos', 'alfajor.png')
-		this.agregarRegistro(4, 'パン', 200, 'Alimentos', 'pan.png')
-		this.agregarRegistro(5, 'あめ', 100, 'Alimentos', 'caramelo.png')
+		this.cargarRegistros()
 	}
-	agregarRegistro(id, nombre, precio, categoria, imagen) {
-		const producto = new Producto(id, nombre, precio, categoria, imagen)
-		this.productos.push(producto)
-	}
+
 	traerRegistro() {
 		return this.productos
+	}
+
+	async cargarRegistros() {
+		const resultado = await fetch('./productos.json')
+		this.productos = await resultado.json()
+		cargarProductos(this.productos)
 	}
 
 	registroPorId(id) {
@@ -30,6 +29,9 @@ class BaseDeDatos {
 
 	registrosPorNombre(palabra) {
 		return this.productos.filter((producto) => producto.nombre.toLowerCase().includes(palabra.toLowerCase()))
+	}
+	registrosPorCategoria(categoria) {
+		return this.productos.filter((producto) => producto.categoria == categoria)
 	}
 }
 
@@ -88,6 +90,11 @@ class Carrito {
 			this.total += producto.precio * producto.cantidad
 			this.cantidadProductos += producto.cantidad
 		}
+		if (this.cantidadProductos > 0) {
+			btnComprar.style.display = ''
+		} else {
+			btnComprar.style.display = 'none'
+		}
 
 		const botonesQuitar = document.querySelectorAll('.btnQuitar')
 		for (const boton of botonesQuitar) {
@@ -110,7 +117,28 @@ const divProductos = document.querySelector('#productos')
 const divCarrito = document.querySelector('#carrito')
 const inputBuscar = document.querySelector('#inputBuscar')
 const btnComprar = document.querySelector('.btnComprar')
+const btnCategorias = document.querySelectorAll('.btnCategoria')
 const imgCarrito = document.querySelector('.imagen-carrito')
+
+btnCategorias.forEach((btn) => {
+	btn.addEventListener('click', () => {
+		const categoria = btn.dataset.categoria
+
+		btnCategorias.forEach((boton) => {
+			boton.classList.remove('active')
+		})
+
+		btn.classList.add('active')
+
+		if (categoria == 'Todos') {
+			cargarProductos(db.traerRegistro())
+		} else {
+			cargarProductos(db.registrosPorCategoria(categoria))
+		}
+
+		const productos = db.registrosPorCategoria(btn.dataset.categoria)
+	})
+})
 
 const carrito = new Carrito()
 
@@ -176,8 +204,4 @@ btnComprar.addEventListener('click', (event) => {
     no-repeat
   `,
 	})
-	imgCarrito.classList.add('resplandor')
-	setTimeout(() => {
-		imgCarrito.classList.remove('resplandor')
-	}, 500)
 })
